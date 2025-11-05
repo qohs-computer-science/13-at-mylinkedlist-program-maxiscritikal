@@ -40,12 +40,12 @@ public class MyLinkedList
         {
             return "Empty List";
         }
-        String result = “”;
+        String result = "";
         ListNode temp = head;
-        while (temp.getValue() != null)
+        while (temp != null)
         {
             result += count + ": " + temp.getValue();
-                if (temp.getNext() != null)
+                if (temp.getValue() != null)
                 {
                     result += "\n";
                 }
@@ -54,6 +54,39 @@ public class MyLinkedList
         }
         return result;
     }//end toString
+
+    public boolean add(Object newItem)
+    {
+        ListNode given = new ListNode(newItem, null);
+        if(head == null)
+        {
+            head = given;
+            return true;
+        }
+
+        else
+        {
+            ListNode temp = head;
+            while (temp.getNext() != null)
+            {
+                temp = temp.getNext();
+            }
+            temp.setNext(given);
+            return true;
+        }
+
+    }//end add
+
+    public boolean addFirst(Object newItem)
+    {
+        ListNode given = new ListNode(newItem, head);
+        ListNode temp = head;
+        while (temp.getNext() != null)
+        {
+            temp = temp.getNext();
+        }
+
+    }//end addFirst
 
 
 
