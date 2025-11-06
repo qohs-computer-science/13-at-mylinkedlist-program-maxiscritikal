@@ -21,16 +21,7 @@ public class MyLinkedList
 
     public boolean isEmpty()
     {
-        boolean empty = true;
-        if(head == null)
-        {
-	        return empty;
-        }
-        else
-        {
-	        empty = false;
-	        return empty;
-        }
+        return head == null;
     }//end isEmpty
 
     public String toString()
@@ -45,7 +36,7 @@ public class MyLinkedList
         while (temp != null)
         {
             result += count + ": " + temp.getValue();
-                if (temp.getValue() != null)
+                if (temp.getNext() != null)
                 {
                     result += "\n";
                 }
@@ -80,14 +71,31 @@ public class MyLinkedList
     public boolean addFirst(Object newItem)
     {
         ListNode given = new ListNode(newItem, head);
+        head = given;
+        return true;
+    }//end addFirst
+
+    public boolean addLast(Object newItem)
+    {
+        return add(newItem);
+    }//end addLast
+
+    public Object set(int i, Object obj) 
+    {
+        if(i >= size() || i < 0)
+        {
+            throw new IndexOutOfBoundsException("Index is out of bounds for this LinkedList");
+        }
+
+        int x = 0;
         ListNode temp = head;
-        while (temp.getNext() != null)
+        while (x < i)
         {
             temp = temp.getNext();
         }
-
-    }//end addFirst
-
-
+        temp.setNext(given);
+        return true;
+        
+    }
 
 }
