@@ -92,10 +92,23 @@ public class MyLinkedList
         while (x < i)
         {
             temp = temp.getNext();
+            x++;
         }
-        temp.setNext(given);
-        return true;
+        temp.setValue(obj);
+        return temp.getValue();
         
-    }
+    }//end set
+
+    public Object get(int i)
+    {
+        int x = 0;
+        ListNode temp = head;
+        while (x < i)
+        {
+            temp = temp.getNext();
+            x++;
+        }
+        return temp.getValue();
+    }//end get
 
 }

@@ -13,6 +13,12 @@ public class MyLLTester
     System.out.println("Size: " + second.size());
     System.out.println("Is Empty: " + second.isEmpty());
     System.out.println("Contents:\n" + second.toString());
+    System.out.println("Adding to the end:\n" + second.add("D"));
+    System.out.println("Adding to the start:\n" + second.addFirst("Max"));
+    System.out.println("Adding to the end:\n" + second.addLast("E"));
+    System.out.println("Updating a value:\n" + second.set(2, "New"));
+    System.out.println("Updated contents:\n" + second.toString());
+
 
   } // end main
   
