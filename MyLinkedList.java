@@ -1,3 +1,5 @@
+//Max Korsa, 11/7/25, PD: 4
+//This class implements a singly linked list with various methods to manipulate the list.
 public class MyLinkedList
 {
     private ListNode head;
@@ -101,6 +103,12 @@ public class MyLinkedList
 
     public Object get(int i)
     {
+
+        if(i >= size() || i < 0)
+        {
+            throw new IndexOutOfBoundsException("Index is out of bounds for this LinkedList");
+        }
+
         int x = 0;
         ListNode temp = head;
         while (x < i)
@@ -114,7 +122,7 @@ public class MyLinkedList
     public Object remove(int i)
     {
         Object removedValue;
-        if(i >= size() || i < 0)
+        if(i >= size() || i < 0 || head == null)
         {
             throw new IndexOutOfBoundsException("Index is out of bounds for this LinkedList");
         }
@@ -127,24 +135,29 @@ public class MyLinkedList
             x++;
         }
 
-            ListNode nodeToRemove = temp.getNext();
-            temp.setNext(nodeToRemove.getNext());
-            nodeToRemove.setNext(null);
-
-        if(temp == head)
+        if(i == 0)
         {
             removedValue = head.getValue();
             head = head.getNext();
             return removedValue;
         }
 
-        else
-        {
-            removedValue = temp.getNext().getValue();
-            temp.setNext(temp.getNext().getNext());
-            return removedValue;
-        }
+        ListNode nodeToRemove = temp.getNext();
+        removedValue = nodeToRemove.getValue();
+        temp.setNext(nodeToRemove.getNext());
+        nodeToRemove.setNext(null);
+        return removedValue;
 
-    }
+    }//end remove
 
-}
+    public Object removeFirst() 
+    {
+        return remove(0);
+    }//end removeFirst
+
+    public Object removeLast() 
+    {
+        return remove(size() - 1);
+    }//end removeLast
+
+}//end MyLinkedList
