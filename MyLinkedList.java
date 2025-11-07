@@ -111,4 +111,40 @@ public class MyLinkedList
         return temp.getValue();
     }//end get
 
+    public Object remove(int i)
+    {
+        Object removedValue;
+        if(i >= size() || i < 0)
+        {
+            throw new IndexOutOfBoundsException("Index is out of bounds for this LinkedList");
+        }
+
+        int x = 0;
+        ListNode temp = head;
+        while (x < i - 1)
+        {
+            temp = temp.getNext();
+            x++;
+        }
+
+            ListNode nodeToRemove = temp.getNext();
+            temp.setNext(nodeToRemove.getNext());
+            nodeToRemove.setNext(null);
+
+        if(temp == head)
+        {
+            removedValue = head.getValue();
+            head = head.getNext();
+            return removedValue;
+        }
+
+        else
+        {
+            removedValue = temp.getNext().getValue();
+            temp.setNext(temp.getNext().getNext());
+            return removedValue;
+        }
+
+    }
+
 }
